@@ -6,10 +6,9 @@ require 'firewall_generator/version'
 Gem::Specification.new do |gem|
   gem.name          = "firewall_generator"
   gem.version       = FirewallGenerator::VERSION
-  gem.authors       = ["TODO: Write your name"]
-  gem.email         = ["TODO: Write your email address"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.authors       = ["Joshua B. Bussdieker"]
+  gem.email         = ["jbussdieker@gmail.com"]
+  gem.summary       = %q{Simple firewall generation tool}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)

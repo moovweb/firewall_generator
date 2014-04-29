@@ -1,24 +1,45 @@
-# FirewallGenerator
+# Firewall Generator
 
-TODO: Write a gem description
+Simple plugin based firewall generation
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'firewall_generator'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install using:
 
     $ gem install firewall_generator
 
+## Config
+
+myconfig.yml
+
+    ---
+      :input:
+        - :type: aws
+          :options:
+            :access_key_id: AKIAFOOBARFOOBAR
+            :secret_access_key: aTasgWEGA/gwEGwageawseAGaGawegasEGAewgas
+        - :type: aws
+          :options:
+            :access_key_id: AKIAFOOBARFOOBAR
+            :secret_access_key: hWEgherhERHedrhdesrhAERG/.argaeagagswawe
+      :output:
+        - :type: template
+          :options:
+            :template: mytemplate.erb
+            :output: output.rules
+
+mytemplate.erb
+
+    <% list.each do |item| %>
+    -A INPUT -p tcp --dport 1234 -s <%= item %>/32 -j ACCEPT
+    <% end %>
+
 ## Usage
 
-TODO: Write usage instructions here
+    $ firewall_generator myconfig.yml
+    $ cat output.rules
+    -A INPUT -p tcp --dport 1234 -s 1.2.3.4/32 -j ACCEPT 
+    -A INPUT -p tcp --dport 1234 -s 2.3.4.5/32 -j ACCEPT 
 
 ## Contributing
 
