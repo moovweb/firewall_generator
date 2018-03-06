@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: "ruby:1.9.3-slim"
+      - image: ruby:1.9.3
     steps:
       - checkout
       - run:
