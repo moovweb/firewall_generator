@@ -1,0 +1,18 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: "ruby:1.9.3-slim"
+    steps:
+      - checkout
+      - run:
+          name: Build gem
+          command: |
+            gem build firewall_generator.gemspec
+            mv firewall_generator*.gem firewall_generator.gem
+      - run:
+          name: Push gem to GemFury (if master)
+          command: |
+            if [ "${CIRCLE_BRANCH}" = "master" ]; then
+              curl --fail -F package=@firewall_generator.gem https://${GEMFURY_TOKEN}@push.fury.io/moovweb/
+            fi
